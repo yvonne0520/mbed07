@@ -158,7 +158,7 @@ int main(int argc, char* argv[]) {
 
   // needed by this graph.
 
-  static tflite::MicroOpResolver<5> micro_op_resolver;
+  static tflite::MicroOpResolver<6> micro_op_resolver;
 
   micro_op_resolver.AddBuiltin(
 
@@ -182,6 +182,9 @@ int main(int argc, char* argv[]) {
 
                                tflite::ops::micro::Register_SOFTMAX());
 
+  micro_op_resolver.AddBuiltin(tflite::BuiltinOperator_RESHAPE,
+
+                               tflite::ops::micro::Register_RESHAPE(), 1);
 
   // Build an interpreter to run the model with
 
